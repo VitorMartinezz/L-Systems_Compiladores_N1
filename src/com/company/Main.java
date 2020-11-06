@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -70,15 +71,15 @@ public class Main {
             if(i == 'A'){
                 x1 = x2;
                 y1 = y2;
-                x2 += 50;
-                y2 += 50;
+                x2 += GenerateRandom();
+                y2 += GenerateRandom();
                 buildLineString();
             }
             else{
                 x1 = x2;
                 y1 = y2;
-                x2 += -20;
-                y2 += -35;
+                x2 += GenerateRandom();
+                y2 += GenerateRandom();
                 buildLineString();
             }
         }
@@ -92,6 +93,11 @@ public class Main {
         result += "y2=\"" + y2 +"\" ";
         result += "style=\"stroke:rgb(255,0,0);stroke-width:2\" />\"";
         htmlMiddle += result;
+    }
+
+    private static int GenerateRandom(){
+        Random random = new Random();
+        return random.nextInt(100 - (-100 - 1) + -100);
     }
 
 }
